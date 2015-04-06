@@ -4,14 +4,44 @@
     <meta charset="UTF-8">
     <title>Your Moving Companion</title>
     <link rel="stylesheet" href="css/style.css">
+    <script type='text/javascript' src='/Users/rodchild/bower_components/knockout/dist/knockout.js'></script>
+
+
 </head>
 <body>
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-    <div id="googleMap"></div>
+<div>
+<!-- HTML for SEARCH BAR -->
+
+<!--<form>
+    <input class="textinput" type="text">
+    <button class="searchButton" data-bind="click:launchSearch">Search</button>
+</form -->
 
 
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!--<script src"  src="https://www.google.com/maps/embed/v1/place?key="AIzaSyAJPtgqJ15BlHs_2HkflaOYp666oJjNvZo">
+</script> -->
+    <div>
+        <div id="map" data-bind="map:map" ></div>
+            <form id="textForm">
+                <!--input id="textinput" class="controls" type="text" placeholder="Search Box"-->
+                <!--button class="searchButton" data-bind="onsearch: mapViewModel.markerSearch">Search</button -->
+            </form>
+
+            <nav id="menu"><p>Key locations</p>
+                    <ul data-bind="foreach: myModel.markers">
+                        <li>
+                            <span data-bind="text: name"> </span>
+                        </li>
+                    </ul>
+            </nav>
+        </div>
     </div>
-<!--    <form id="form-container" class="form-container">
+<!-- AIzaSyAJPtgqJ15BlHs_2HkflaOYp666oJjNvZo -->
+
+<!--
+    <form id="form-container" class="form-container">
         <label for="street">Street: </label><input type="text" id="street" value="">
         <label for="city">City: </label><input type="text" id="city" value="">
         <button id="submit-btn">Submit</button>

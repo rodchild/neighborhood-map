@@ -2,9 +2,42 @@
 body {background-color: #CCC;}
 
 
-#googleMap{
-    width: 1900px;
+#map {
+    width: 1400px;
     height: 900px;
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    border: solid blue;
+
+}
+#textinput {
+    width: 380px;
+    height: 40px;
+    position: relative;
+    float: left;
+    border: solid red;
+}
+.searchButton {
+    float: left;
+    height: 40px;
+}
+
+nav {
+    float: left;
+    position: relative;
+    background-color: #E2D9D9;
+    width: 437px;
+    border: solid yellow 1px;
+}
+
+li {
+    position: relative;
+    list-style-type: none;
+    height: 30px;
+    margin: 0 0 0 -40px;
+    background-color: rgb(226, 225, 225);
+    border: solid rgb(200, 185, 185) 1px;
 
 }
 

@@ -1,64 +1,181 @@
-/* ======= Model ======= */
+//global for map
 
-    var model = {
-        theMap: null,
-        script: null,
-        mapProp: {
-        center: new google.maps.LatLng(51.508742, -0.120850), zoom: 7, mapTypeId: google.maps.MapTypeId.ROADMAP
-    },
+/* ======= Model =======*/
 
-   // map:new google.maps.Map(document.getElementById("googleMap"), mapProp),
-  // script: document.createElement("script"),
-   //script.src: "http://maps.googleapis.com/maps/api/js?callback=initialize",
+    var mapModel = function(){
 
-};
+        this.latlong = new google.maps.LatLng(45.4528785, -75.5980628);//"45.4528785,-75.5980628",
+        this.map = new google.maps.Map($('#map')[0], {
+            zoom: 13,
+            center: new google.maps.LatLng(45.4528785, -75.5980628),
+            mapTypeId: 'terrain'
+        });
 
+         this.markers = ko.observableArray(
+            [
+                { name: "Canada Aviation and Space Museum", latitude: 45.4343347, longitude: -75.574817113 },
+                { name: "La cite collegiale", latitude: 45.439544, longitude: -75.626530 },
+                { name: "Canada Science and Technology Museum", latitude: 45.4081887, longitude: -75.6371472 },
+                { name: "Metro Ogilvie Market ", latitude: 45.4497511, longitude: -75.6025145 },
+                //{name: "La cite collegiale", latitude: 45.439544, longitude: -75.626530}
+                //{name: "La cite collegiale", latitude: 45.439544, longitude: -75.626530}
+            ]
+        );
 
-/* ======= Controller ======= */
-
-var controller = {
-
-    init: function() {
-        // set our current cat to the first one in the list
-
-       // model.script = document.createElement("script");
-       // model.script.src = "http://maps.googleapis.com/maps/api/js?callback=initialize";
-        //var mapProp = { center: new google.maps.LatLng(51.508742, -0.120850), zoom: 7,mapTypeId: google.maps.MapTypeId.ROADMAP
-       // };
-        model.theMap = new google.maps.Map(document.getElementById("googleMap"), model.mapProp);
+      //  iconBase: ko.observable('https://maps.google.com/mapfiles/kml/shapes/'),
+    };
 
 
 
+
+/* ======= View model =======*/
+
+//var mapViewModel = {
+
+    mapModel.prototype.init = function() {
+        var self = this;
         // tell our views to initialize
-        //catListView.init();
-        mapView.init();
-    },
+        self.render();
+    };
 
-    getMap: function() {
-        google.maps.event.addDomListener(window, 'load', mapView.init);
+    mapModel.prototype.createMap = function() {
 
-        return model.theMap;
-    },
-};
+        var self = this;
+        //map = mapModel.map;
+        var input = document.createElement("input");/** @type {HTMLInputElement} */
+        document.getElementById('textForm').appendChild(input);
+        var attId = document.createAttribute("id");       // Create a "class" attribute
+        attId.value = "textinput";                           // Set the value of the class attribute
+        input.setAttributeNode(attId);                          // Add the class attribute to <h1>
+        var attType = document.createAttribute("type");
+        attType.value = "search";
+        input.setAttributeNode(attType);
+        var attPlace = document.createAttribute("placeholder");
+        attPlace.value = "Search Box";
+        input.setAttributeNode(attPlace);
+        var attBind = document.createAttribute("data-bind");       // Create a "class" attribute
+        attBind.value = "onsearch: mapModel.removeMarker";                           // Set the value of the class attribute
+        input.setAttributeNode(attBind);
+        var attOnsearch = document.createAttribute("onsearch");
+        attOnsearch.value = "onsearch=mapModel.removeMarker()";
+        input.setAttributeNode(attOnsearch);
+
+
+        self.addMarker(self.markers());
+
+        // Allow each marker to have an info window
+     /*   google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+                alert("KKKK");
+            }
+        })(marker, i));*/
+
+        // Automatically center the map fitting all markers on the screen
+        //map.fitBounds(bounds);
+       return self.map;
+
+    };
+
+    mapModel.prototype.addMarker = function(theMarker){
+        var self = this;
+          //self.marker.setMap(map);
+
+       // var bounds = new google.maps.LatLngBounds();
+        for( i = 0; i < theMarker.length; i++ ) {
+
+            var position = new google.maps.LatLng(theMarker[i].latitude, theMarker[i].longitude);
+         //   bounds.extend(position);
+            marker = new google.maps.Marker({
+                    position: position,
+                    map: self.map,
+                    title: theMarker[i].name
+                }
+            );
+            //myMarker[i] =  markers()[i].name;
+        }
+    };
+
+    mapModel.prototype.matchInArray = function (string, expressions) {
+        var len = expressions.length,
+            i = 0;
+            for (; i < len; i++) {
+                if (string.match(expressions[i])) {
+                    return true;
+                }
+            }
+        return false;
+    };
+
+    mapModel.prototype.removeMarker = function(){
+        var self = this;
+      /*  //setAllMap(null);
+        var theText = document.getElementById("textinput").value;
+        for (var i = 0; i < self.markers().length - 1; i++) {
+            if(theText == self.markers()[i].name){
+                alert(theText);
+               // alert(mapModel.markers()[i]);
+                self.markers()[i] = null;
+               // mapModel.markers() = null;
+            }
+        }*/
+        //alert("YYY");
+        this.marker.setMap(null);
+
+        while(self.markers().length > 0) {
+            self.markers.pop();//.removeMarker();
+        }
+    };
+
+    mapModel.prototype.markerSearch = function() {
+        self = this;
+        if (self.markers().length == 0) {
+            return;
+        }
+      //  var theText = document.getElementById("textinput").value;
+
+       // alert(theText);
+
+        self.removeMarker();
+
+    };
+
+    mapModel.prototype.render = function() {
+        // update the DOM elements with values from the current map
+        var self = this;
+        self.createMap();
+    }
+
+//};
+
+var myModel = new mapModel();
+
+ko.applyBindings(myModel.init());
 
 
 /* ======= View ======= */
-
+/*
 var mapView = {
 
         init: function() {
         // store pointers to our DOM elements for easy access later
-       // document.body.appendChild(model.script);
-       // this.mapElem = new google.maps.Map(document.getElementById("googleMap"), model.theMap);//document.getElementById('map');
-        //this.catNameElem = document.getElementById('cat-name');
-       // this.catImageElem = document.getElementById('cat-img');
-        //this.countElem = document.getElementById('cat-count');
+       var icons = {
+                    parking: {
+                                icon: mapModel.iconBase + 'parking_lot_maps.png'
+                            },
+                    library: {
+                                icon: mapModel.iconBase +  'library_maps.png'
+                            },
+                    info: {
+                                icon: mapModel.iconBase +  'info-i_maps.png'
+                            }
+                };
 
-        // on click, increment the current cat's counter
-        /*this.catImageElem.addEventListener('click', function(){
-            octopus.incrementCounter();
-        });*/
-
+        script= document.createElement("script"),
+        script.type = mapModel.type;//'text/javascript';
+        script.src= "https://www.google.com/maps/embed/v1/place?key=AIzaSyAJPtgqJ15BlHs_2HkflaOYp666oJjNvZo";
+        document.body.appendChild(script);
 
         // render this view (update the DOM elements with the right values)
         this.render();
@@ -66,17 +183,17 @@ var mapView = {
 
     render: function() {
         // update the DOM elements with values from the current map
-        var theMap = controller.getMap();
-        /*this.countElem.textContent = currentCat.clickCount;
-        this.catNameElem.textContent = currentCat.name;
-        this.catImageElem.src = currentCat.imgSrc;
-        */
+        var theMap = mapController.getMap();
+        //mapController.launchSearch();
+        mapController.addMarker();
     }
+   // mapController.launchSearch();
 
-};
+};*/
 
 // make it go!
-controller.init();
+
+
 
 /*
 function loadData() {
