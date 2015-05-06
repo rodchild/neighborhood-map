@@ -1,85 +1,64 @@
-* {box-sizing:border-box;}
-body {background-color: #CCC;}
+*  {  box-sizing:border-box;}
+body { background-color: #CCC;}
 
 
 #map {
     width: 1400px;
     height: 900px;
+    margin: 30px 20px 0 0;
     position: relative;
     float: right;
-    margin-right: 20px;
     border: solid blue;
 
 }
+
+.markerInfoWindow {
+   width: 250px !important;
+   top: 0 !important;
+   left: 0 !important;
+   padding: 5px;
+   background-color: lightgrey;
+   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+   border: 1px solid rgba(72, 181, 233, 0.6);
+   border-radius: 2px 2px 0 0;
+}
+
 #textinput {
-    width: 380px;
-    height: 40px;
+    width: 450px;
+    height: 30px;
     position: relative;
     float: left;
-    border: solid red;
+    border: solid grey;
 }
 .searchButton {
     float: left;
     height: 40px;
 }
 
-nav {
-    float: left;
+header p {
     position: relative;
-    background-color: #E2D9D9;
-    width: 437px;
-    border: solid yellow 1px;
+    float: left;
+    margin: 1px 0 0 0;
+    background-color: white;
+    width: 450px;
+    height: 20px;
+}
+
+ul {
+    position: relative;
+    float: left;
+    margin: 1px 0 0 0;
+    background-color: white;
+    width: 450px;
 }
 
 li {
     position: relative;
     list-style-type: none;
-    height: 30px;
+    height: 20px;
     margin: 0 0 0 -40px;
-    background-color: rgb(226, 225, 225);
-    border: solid rgb(200, 185, 185) 1px;
+    background-color: white;
+    border-top: solid grey 1px;
 
 }
 
-.bgimg {
-    position:fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    z-index:-1;
-    opacity:1;
-}
-
-.greeting {
-    color:black;
-    text-shadow: 1px 1px 3px rgba(255,255,255, .5);
-    text-align: center;
-}
-
-.wikipedia-container {
-    float:right;
-    width:290px;
-    padding:10px;
-    margin-right: 10px;
-    background-color: rgba(255,255,255,0.7);
-}
-
-.nytimes-container {
-    padding: 10px;
-    margin-right:300px;
-    background-color: rgba(255,255,255,0.7);
-}
-
-.article-list {
-    margin: 0;
-    padding: 0;
-}
-
-.article {
-    list-style-type: none;
-    padding:10px;
-    border-top: 1px solid #CCC;
-}
-.article:first-child {
-    border-top:none;
-}
