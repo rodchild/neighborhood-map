@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Your Moving Companion</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script type='text/javascript' src='js/knockout/dist/knockout.js'></script>
-    </head>
-    <body>
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <div id="map"></div>
-        <header>
-            <form action="#">
-                <input id="textinput" placeholder="Search…" type="search" name="q" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off"/>
-            </form>
-        </header>
-        <div class="content">
-            <header><p>Key locations</p></header>
-            <ul data-bind="foreach:markersToShow">
-                <li data-bind="text: name">
-            </ul>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Moving Companion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type='text/javascript' src='/Users/rodchild/bower_components/knockout/dist/knockout.js'></script>
 
+
+</head>
+<body>
+<div>
+<!-- HTML for SEARCH BAR -->
+
+<!--<form>
+    <input class="textinput" type="text">
+    <button class="searchButton" data-bind="click:launchSearch">Search</button>
+</form -->
+
+
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<!--<script src"  src="https://www.google.com/maps/embed/v1/place?key="AIzaSyAJPtgqJ15BlHs_2HkflaOYp666oJjNvZo">
+</script> -->
+    <div>
+        <div id="map" data-bind="map:map" ></div>
+            <form id="textForm">
+                <!--input id="textinput" class="controls" type="text" placeholder="Search Box"-->
+                <!--button class="searchButton" data-bind="onsearch: mapViewModel.markerSearch">Search</button -->
+            </form>
+
+            <nav id="menu"><p>Key locations</p>
+                    <ul data-bind="foreach: myModel.markers">
+                        <li>
+                            <span data-bind="text: name"> </span>
+                        </li>
+                    </ul>
+            </nav>
         </div>
-        <script src="js/libs/jquery.min.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+    </div>
+<!-- AIzaSyAJPtgqJ15BlHs_2HkflaOYp666oJjNvZo -->
+
+<!--
+    <form id="form-container" class="form-container">
+        <label for="street">Street: </label><input type="text" id="street" value="">
+        <label for="city">City: </label><input type="text" id="city" value="">
+        <button id="submit-btn">Submit</button>
+    </form>
+
+    <hr>
+
+    <h2 id="greeting" class="greeting">Where do you want to live?</h2>
+
+
+    <div class="wikipedia-container">
+        <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
+        <ul id="wikipedia-links">Type in an address above and find relevant Wikipedia articles here!</ul>
+    </div>
+
+
+    <div class="nytimes-container">
+        <h3 id="nytimes-header">New York Times Articles</h3>
+        <ul id="nytimes-articles" class="article-list">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</ul>
+    </div>
+-->
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
 </html>
