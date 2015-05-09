@@ -11,3 +11,15 @@ BOOK:
 
 	Programming in HTML5 with Javascript and CSS3 by Glen Johnson.
 
+
+
+Link to application http://rodchild.github.io/neighborhood-map/
+
+The map shows 10 places with marker assoiated to each of them on my google neighborhood map. When clicked the marker open an info window with a little description of the marker from  wiki pages obtained with wiki API requests.
+
+Functionality:
+
+Predefined neighborhood with 10 locations;
+Filter places by name;
+Click places markers to get a description in most cases;
+
