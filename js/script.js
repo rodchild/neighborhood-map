@@ -1,8 +1,7 @@
-//$(function() {
 
         // VARIABLES
         //the map with its option
-        map = new google.maps.Map($('#map')[0], {
+        var map = new google.maps.Map($('.map-canvas')[0], {
             zoom: 13,
             center: new google.maps.LatLng(45.4528785, -75.5980628),
             mapTypeId: 'terrain'
@@ -17,7 +16,7 @@
             var self = this;
 
                 var marker;//to poupulate the map with marker
-                var contentString//the text for marker infowindow
+                var contentString;//the text for marker infowindow
                 //observables
                 self.name = ko.observable(name);
                 self.lat  = ko.observable(lat);
@@ -29,7 +28,6 @@
                     title: name,
 
                 });
-
                 marker.setMap(map);
                 markerArray.push(marker);
 
@@ -131,5 +129,3 @@
             }, viewModel);
 
 ko.applyBindings(viewModel);
-
-

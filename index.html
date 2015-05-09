@@ -3,25 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <title>Your Moving Companion</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <script type='text/javascript' src='js/knockout/dist/knockout.js'></script>
     </head>
     <body>
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <div id="map"></div>
-        <header>
-            <form action="#">
-                <input id="textinput" placeholder="Search…" type="search" name="q" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off"/>
-            </form>
-        </header>
-        <div class="content">
-            <header><p>Key locations</p></header>
-            <ul data-bind="foreach:markersToShow">
-                <li data-bind="text: name">
-            </ul>
+        <div class="navbar navbar-custom navbar-fixed-top">
+          <form class="navbar-form">
+            <div class="form-group" style="display:inline;">
+              <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off">
+              </div>
+            </div>
+          </form>
+        </div>
 
+        <div class="map-canvas"></div>
+        <div class="container-fluid" id="main">
+            <div class="row">
+                <div class="col-xs-4" id="left">
+                    <h4>Key Locations</h4>
+                    <ul class="list-group" data-bind="foreach:markersToShow">
+                        <li class="list-group-item" data-bind="text: name"></li>
+                    </ul>
+                    <div class="col-xs-8"><!--here will be map-canvas--></div>
+                </div>
+            </div>
         </div>
         <script src="js/libs/jquery.min.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
+
