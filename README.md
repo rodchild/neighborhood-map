@@ -23,3 +23,6 @@ Predefined neighborhood with 10 locations;
 Filter places by name;
 Click places markers to get a description in most cases;
 
+To run the application open the index.html file from neighborhoodmap folder in a web browser. The search window invites you to search for a specific marker among those displayed on the map and listed on the listview. The map and the listview will display only the search result. A click on the marker will give a description of the marker for most of them.
+
+
