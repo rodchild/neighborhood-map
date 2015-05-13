@@ -3,28 +3,33 @@
 
     <head>
         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Your Moving Companion</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <script type='text/javascript' src='js/knockout/dist/knockout.js'></script>
     </head>
 
-    <body class="container">
-        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <form class="navbar-form">
-            <input type="text" class="form-control" placeholder="Search" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off">
-        </form>
-        <div class="map-canvas"></div>
-        <div class="container-fluid" id="main">
+    <body>
+        <div class="container">
             <div class="row">
-                <div class="left">
-                    <h4>Key Locations</h4>
-                    <ul class="list-group" data-bind="foreach:markersToShow">
-                        <li class="list-group-item" data-bind="text: name"></li>
-                    </ul>
-                    <div class="col-xs-12">
-                        <!--here will be map-canvas-->
+                <div class="col-sm-3 col-md-6 col-lg-8">
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off">
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid col-sm-3 col-md-6 col-lg-8">
+                    <div class="left">
+                        <h4>Key Locations</h4>
+                        <ul class="list-group" data-bind="foreach:markersToShow">
+                            <li class="list-group-item-text" data-bind="text: name"></li>
+                        </ul>
                     </div>
+                </div>
+                <div class="map-canvas col-sm-3 col-md-6 col-lg-8">
+                    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
                 </div>
             </div>
         </div>
