@@ -1,4 +1,4 @@
-// VARIABLES
+/ VARIABLES
 //the map with its option
 var map = new google.maps.Map($('.map-canvas')[0], {
     zoom: 13,
@@ -82,6 +82,7 @@ viewModel = function(name, lat, lon) {
     return false;
 };
 
+
 /* show and hide listview when mouse hover on search box */
 $( ".form-control" ).hover(function() {
         $('.container-fluid').show();
@@ -112,7 +113,13 @@ var mapMarker = {
         new viewModel("Canadian Museum of Nature", 45.3792579, -75.5785937),
         new viewModel("Lester B. Pearson Catholic High School", 45.443309, -75.595915),
         new viewModel("Gloucester Public Library", 45.428169, -75.604758),
+        new viewModel("Chapel Hill South", 45.442319, -75.517147),
+        new viewModel("Industrial Park", 45.413888, -75.654476),
+        new viewModel("Carson Grove - Carson Meadows", 45.441838, -75.635250),
         new viewModel("Montfort Hospital", 45.445432, -75.63906),
+        new viewModel("Playfair Park - Lynda Park - Guildwood Estates", 45.389782, -75.647609),
+        new viewModel("Vanier South", 45.433952, -75.662709),
+        new viewModel("Old Ottawa South", 45.388882, -75.687772),
         new viewModel("The Children's Hospital of Eastern Ontario", 45.401004, -75.651373),
     ],
 

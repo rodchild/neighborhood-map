@@ -12,30 +12,32 @@
 
     <body>
         <div class="container">
+
             <div class="row">
-                <div class="col-sm-3 col-md-6 col-lg-8">
-                    <form role="form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off">
-                        </div>
-                    </form>
-                </div>
+
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" data-bind="value:query, valueUpdate: 'keyup'" autocomplete="off">
+                    </div>            
+                </form>
+
                 <div class="container-fluid col-sm-3 col-md-6 col-lg-8">
-                    <div class="left">
-                        <h4>Key Locations</h4>
-                        <ul class="list-group" data-bind="foreach:markersToShow">
-                            <li class="list-group-item-text" data-bind="text: name"></li>
-                        </ul>
-                    </div>
+                    <h4>Key Locations</h4>
+                    
+                    <ul class="list-group" data-bind="foreach:markersToShow">
+                        <li class="list-group-item-text" data-bind="text: name"></li>
+                    </ul>
                 </div>
+                
                 <div class="map-canvas col-sm-3 col-md-6 col-lg-8">
-                    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+                        <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
                 </div>
+
             </div>
+            
         </div>
         <script src="js/libs/jquery.min.js"></script>
         <script src="js/script.js"></script>
     </body>
 
 </html>
-
