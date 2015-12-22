@@ -1,4 +1,4 @@
-/ VARIABLES
+// VARIABLES
 //the map with its option
 var map = new google.maps.Map($('.map-canvas')[0], {
     zoom: 13,
